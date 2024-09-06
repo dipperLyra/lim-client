@@ -10,7 +10,7 @@ export default function Home() {
   const [error, setError] = useState(null);
   const router = useRouter();
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_API}/auth/login`, {
@@ -24,8 +24,8 @@ export default function Home() {
       } else {
         setError(data.message);
       }
-    } catch (error) {
-      setError("Login failed. Please try again.");
+    } catch (error: any) {
+      setError(error.message || "Login failed. Please try again.");
     }
   };
 
