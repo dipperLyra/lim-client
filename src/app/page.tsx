@@ -30,7 +30,7 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
+    <main className="flex min-h-screen flex-col items-center justify-center p-4 md:p-24">
       <div className="flex flex-col items-center justify-center mb-12">
         <Image
           src="/bloom-logo.png"
