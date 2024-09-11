@@ -55,14 +55,18 @@ export default function Dashboard() {
         <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100">
           <div className="container mx-auto p-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {labs.map((lab) => (
-                <LaboratoryMetricCard
-                  id={lab.id}
-                  title="Equipment"
-                  total={20}
-                  key={lab.id}
-                />
-              ))}
+              <LaboratoryMetricCard
+                id={1}
+                title="Total Equipment"
+                total={20}
+                key={1}
+              />
+              <LaboratoryMetricCard
+                id={1}
+                title="Out of Service"
+                total={20}
+                key={1}
+              />
             </div>
           </div>
         </main>
