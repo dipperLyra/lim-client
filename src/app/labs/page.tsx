@@ -7,6 +7,7 @@ import { LabType } from "@/libs/types/lab.type";
 import { useRouter } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import LaboratoryCard from "../components/cards/Laboratory";
 
 export default function LabSetup() {
   const [labDetails, setLabDetails] = useState({
@@ -104,41 +105,11 @@ export default function LabSetup() {
               {loading ? (
                 <p>Loading...</p>
               ) : (
-                <table className="w-full border-collapse border border-gray-200">
-                  <thead>
-                    <tr>
-                      <th className="px-4 py-2 border border-gray-200 bg-gray-100 text-left">
-                        S/N
-                      </th>
-                      <th className="px-4 py-2 border border-gray-200 bg-gray-100 text-left">
-                        Name
-                      </th>
-                      <th className="px-4 py-2 border border-gray-200 bg-gray-100 text-left">
-                        Action
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {labs.map((lab, index) => (
-                      <tr key={lab.id}>
-                        <td className="px-4 py-2 border border-gray-200">
-                          {index + 1}
-                        </td>
-                        <td className="px-4 py-2 border border-gray-200">
-                          {lab.name}
-                        </td>
-                        <td className="px-4 py-2 border border-gray-200">
-                          <Link
-                            href={`/labs/${lab.id}`}
-                            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
-                          >
-                            Goto Lab
-                          </Link>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {labs.map((lab) => (
+                    <LaboratoryCard key={lab.id} id={lab.id} name={lab.name} />
+                  ))}
+                </div>
               )}
             </div>
             <div className="border-b border-gray-200"></div>
