@@ -1,13 +1,13 @@
 export interface EquipmentType {
-  id: number;
+  id?: number;
   name: string;
-  serialNumber: string;
-  description: string;
-  manufacturer: string;
+  serialNumber?: string;
+  description?: string;
+  manufacturer?: string;
   model?: string;
-  status?: Status;
+  status: any;
 }
 
-type Status = {
-  status: "functional" | "non-functional";
-};
+export interface StatusType {
+  status: string;
+}

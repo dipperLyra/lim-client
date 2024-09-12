@@ -3,17 +3,18 @@
 import React, { useState, useEffect } from "react";
 
 import DashboardHeader from "../components/Header";
-import { LabType } from "@/libs/types/lab.type";
 
 import { X } from "lucide-react";
 import SidePanel from "../components/SidePanel";
 import LaboratoryMetricCard from "../components/cards/Laboratory-Metric";
-import { EquipmentType } from "@/libs/types/equip.type";
+import { EquipmentStatsType } from "@/libs/types/stats.type";
 
 export default function Dashboard() {
-  const [equip, setEquip] = useState<EquipmentType[]>([]);
-  const [equipCount, setEquipCount] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const [equipStat, setEquipStat] = useState<EquipmentStatsType>({
+    functionalEquipmentCount: 0,
+    nonFunctionalEquipmentCount: 0,
+    totalEquipmentCount: 0,
+  });
   const [sidePanelOpen, setSidePanelOpen] = useState(false);
 
   const handleSidePanelToggle = () => {
@@ -21,13 +22,11 @@ export default function Dashboard() {
   };
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API}/equipment/`)
+    fetch(`${process.env.NEXT_PUBLIC_API}/stats/equipment`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        setEquipCount(data.length);
-        setEquip(data);
-        setLoading(false);
+        setEquipStat(data);
       });
   }, []);
 
@@ -62,21 +61,21 @@ export default function Dashboard() {
               <LaboratoryMetricCard
                 id={1}
                 title="Total Equipment"
-                total={equipCount}
+                total={equipStat.totalEquipmentCount}
                 color="bg-blue-500"
                 key={1}
               />
               <LaboratoryMetricCard
                 id={1}
                 title="Functional"
-                total={1}
+                total={equipStat.functionalEquipmentCount}
                 color="bg-green-500"
                 key={1}
               />
               <LaboratoryMetricCard
                 id={1}
                 title="Out of Service"
-                total={0}
+                total={equipStat.nonFunctionalEquipmentCount}
                 color="bg-red-500"
                 key={1}
               />

@@ -5,28 +5,93 @@ import React, { useState, useEffect } from "react";
 import DashboardHeader from "../components/Header";
 
 import { X } from "lucide-react";
+import { toast } from "react-toastify";
 import SidePanel from "../components/SidePanel";
 import { EquipmentType } from "@/libs/types/equip.type";
 import Link from "next/link";
+import { Modal } from "../components/modals";
+import { EquipmentStatusDropdown } from "../components/input/EquipmentStatusInput";
 
 export default function Equipment() {
   const [equip, setEquip] = useState<EquipmentType[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [equipForm, setEquipForm] = useState<EquipmentType>({
+    name: "",
+    status: "",
+    description: "",
+    manufacturer: "",
+    model: "",
+    serialNumber: "",
+  });
   const [sidePanelOpen, setSidePanelOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [isFetch, setIsFetch] = useState(false);
 
   const handleSidePanelToggle = () => {
     setSidePanelOpen(!sidePanelOpen);
+  };
+
+  const handleInputChange = (e: any) => {
+    setEquipForm((prevDetails) => ({
+      ...prevDetails,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    const formData: EquipmentType = {
+      name: equipForm.name,
+      status: equipForm.status,
+      description: equipForm.description,
+      manufacturer: equipForm.manufacturer,
+      model: equipForm.model,
+      serialNumber: equipForm.serialNumber,
+    };
+
+    fetch(`${process.env.NEXT_PUBLIC_API}/equipment/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        toast.success("Equipment created successfully!");
+        setEquipForm({
+          name: "",
+          status: "",
+          description: "",
+          manufacturer: "",
+          model: "",
+          serialNumber: "",
+        });
+        setShowModal(false);
+        setIsFetch(true);
+      })
+      .catch((error) => {
+        toast.error("Error creating lab: " + error.message);
+      });
   };
 
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_API}/equipment/`)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        setEquip(data);
-        setLoading(false);
+        const arr: EquipmentType[] = [];
+        data.map((equipment: EquipmentType) => {
+          arr.push({
+            name: equipment.name,
+            status: equipment.status.status,
+            description: equipment.description,
+            manufacturer: equipment.manufacturer,
+            model: equipment.model,
+            serialNumber: equipment.serialNumber,
+          });
+        });
+        setEquip(arr);
       });
-  }, []);
+  }, [isFetch]);
 
   return (
     <div className="flex h-screen bg-gray-100">
@@ -82,7 +147,7 @@ export default function Equipment() {
                       {equip.name}
                     </td>
                     <td className="px-4 py-2 border border-gray-200">
-                      {equip.status?.status}
+                      {equip.status}
                     </td>
                     <td className="px-4 py-2 border border-gray-200">
                       <Link
@@ -96,9 +161,139 @@ export default function Equipment() {
                 ))}
               </tbody>
             </table>
+
+            {/* Button to trigger modal */}
+            <div className="flex justify-end mt-4">
+              <button
+                className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+                onClick={() => setShowModal(true)}
+              >
+                New Equipment
+              </button>
+            </div>
+
+            <NewEquipmentForm
+              showModal={showModal}
+              setShowModal={setShowModal}
+              handleInputChange={handleInputChange}
+              equipment={equipForm}
+              handleSubmit={handleSubmit}
+            />
           </div>
         </main>
       </div>
     </div>
   );
 }
+
+type NewEquipmentFormType = {
+  showModal: boolean;
+  setShowModal: any;
+  handleSubmit: any;
+  handleInputChange: any;
+  equipment: EquipmentType;
+};
+
+const NewEquipmentForm = ({
+  showModal,
+  setShowModal,
+  handleSubmit,
+  handleInputChange,
+  equipment,
+}: NewEquipmentFormType) => {
+  return (
+    <Modal show={showModal} onClose={() => setShowModal(false)}>
+      <h1 className="text-xl font-bold">New Equipments</h1>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="name"
+          >
+            Name
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="name"
+            type="text"
+            name="name"
+            value={equipment.name}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="serialNumber"
+          >
+            Serial/Production Number
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="serialNumber"
+            type="text"
+            name="serialNumber"
+            value={equipment.serialNumber}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="description"
+          >
+            Description
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="description"
+            type="text"
+            name="description"
+            value={equipment.description}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="manufacturer"
+          >
+            Manufacturer
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="manufacturer"
+            type="text"
+            name="manufacturer"
+            value={equipment.manufacturer}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="model"
+          >
+            Model
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="model"
+            type="text"
+            name="model"
+            value={equipment.model}
+            onChange={handleInputChange}
+          />
+        </div>
+
+        <EquipmentStatusDropdown
+          status={equipment.status}
+          handleInputChange={handleInputChange}
+        />
+        <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 mb-4 rounded">
+          Submit
+        </button>
+      </form>
+    </Modal>
+  );
+};
