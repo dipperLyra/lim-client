@@ -27,7 +27,7 @@ const SidePanel = () => (
               className="flex items-center p-2 text-gray-600 hover:bg-gray-100 rounded"
             >
               <Hammer className="h-5 w-5 mr-2" />
-              Equipment
+              <Link href={`/equipment`}>Equipment</Link>
             </a>
           </li>
           <li>
