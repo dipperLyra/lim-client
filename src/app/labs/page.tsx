@@ -2,9 +2,9 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import DashboardHeader from "../components/Header";
+import { Modal } from "../components/modals";
 import SidePanel from "../components/SidePanel";
 import { LabType } from "@/libs/types/lab.type";
-import { useRouter } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import LaboratoryCard from "../components/cards/Laboratory";
 
@@ -15,6 +15,15 @@ export default function LabSetup() {
     state: "",
     country: "",
   });
+  const [labs, setLabs] = useState<LabType[]>([]);
+  const [isFetch, setIsFetch] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [sidePanelOpen, setSidePanelOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleSidePanelToggle = () => {
+    setSidePanelOpen(!sidePanelOpen);
+  };
 
   const handleInputChange = (e: any) => {
     setLabDetails((prevDetails) => ({
@@ -43,19 +52,12 @@ export default function LabSetup() {
       .then((data) => {
         toast.success("Lab created successfully!");
         setLabDetails({ name: "", address: "", state: "", country: "" });
+        setShowModal(false);
+        setIsFetch(true);
       })
       .catch((error) => {
         toast.error("Error creating lab: " + error.message);
       });
-  };
-
-  const [labs, setLabs] = useState<LabType[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [sidePanelOpen, setSidePanelOpen] = useState(false);
-  const router = useRouter();
-
-  const handleSidePanelToggle = () => {
-    setSidePanelOpen(!sidePanelOpen);
   };
 
   useEffect(() => {
@@ -65,7 +67,7 @@ export default function LabSetup() {
         setLabs(data.labs);
         setLoading(false);
       });
-  }, []);
+  }, [isFetch]);
 
   return (
     <main>
@@ -115,10 +117,18 @@ export default function LabSetup() {
                   ))}
                 </div>
               )}
-            </div>
-            <div className="border-b border-gray-200"></div>
-            <div className="w-full md:w-1/2 ">
-              <div className="container mx-auto p-4">
+
+              {/* Button to trigger modal */}
+              <div className="flex justify-end mt-4">
+                <button
+                  className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+                  onClick={() => setShowModal(true)}
+                >
+                  Add New Lab
+                </button>
+              </div>
+
+              <Modal show={showModal} onClose={() => setShowModal(false)}>
                 <h1 className="text-xl font-bold">New Lab</h1>
                 <form onSubmit={handleSubmit}>
                   <div className="mb-4">
@@ -189,7 +199,7 @@ export default function LabSetup() {
                     Submit
                   </button>
                 </form>
-              </div>
+              </Modal>
             </div>
           </main>
         </div>
