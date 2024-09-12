@@ -6,6 +6,8 @@ export interface EquipmentType {
   manufacturer?: string;
   model?: string;
   status: any;
+  labId?: string;
+  comment?: string;
 }
 
 export interface StatusType {

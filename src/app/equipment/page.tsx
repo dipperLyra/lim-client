@@ -11,6 +11,8 @@ import { EquipmentType } from "@/libs/types/equip.type";
 import Link from "next/link";
 import { Modal } from "../components/modals";
 import { EquipmentStatusDropdown } from "../components/input/EquipmentStatusInput";
+import { EquipmentLabDropdown } from "../components/input/EquipmentLabInput";
+import { LabType } from "@/libs/types/lab.type";
 
 export default function Equipment() {
   const [equip, setEquip] = useState<EquipmentType[]>([]);
@@ -21,7 +23,10 @@ export default function Equipment() {
     manufacturer: "",
     model: "",
     serialNumber: "",
+    labId: "",
+    comment: "",
   });
+  const [laboratories, setLaboratories] = useState<LabType[]>([]);
   const [sidePanelOpen, setSidePanelOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [isFetch, setIsFetch] = useState(false);
@@ -46,6 +51,8 @@ export default function Equipment() {
       manufacturer: equipForm.manufacturer,
       model: equipForm.model,
       serialNumber: equipForm.serialNumber,
+      labId: equipForm.labId,
+      comment: equipForm.comment,
     };
 
     fetch(`${process.env.NEXT_PUBLIC_API}/equipment/`, {
@@ -65,6 +72,7 @@ export default function Equipment() {
           manufacturer: "",
           model: "",
           serialNumber: "",
+          comment: "",
         });
         setShowModal(false);
         setIsFetch(true);
@@ -82,14 +90,21 @@ export default function Equipment() {
         data.map((equipment: EquipmentType) => {
           arr.push({
             name: equipment.name,
-            status: equipment.status.status,
+            status: equipment.status,
             description: equipment.description,
             manufacturer: equipment.manufacturer,
             model: equipment.model,
             serialNumber: equipment.serialNumber,
+            comment: equipment.comment,
           });
         });
         setEquip(arr);
+      });
+
+    fetch(`${process.env.NEXT_PUBLIC_API}/lab/`)
+      .then((response) => response.json())
+      .then((data) => {
+        setLaboratories(data.labs);
       });
   }, [isFetch]);
 
@@ -178,6 +193,7 @@ export default function Equipment() {
               handleInputChange={handleInputChange}
               equipment={equipForm}
               handleSubmit={handleSubmit}
+              laboratories={laboratories}
             />
           </div>
         </main>
@@ -192,6 +208,7 @@ type NewEquipmentFormType = {
   handleSubmit: any;
   handleInputChange: any;
   equipment: EquipmentType;
+  laboratories: LabType[];
 };
 
 const NewEquipmentForm = ({
@@ -200,6 +217,7 @@ const NewEquipmentForm = ({
   handleSubmit,
   handleInputChange,
   equipment,
+  laboratories,
 }: NewEquipmentFormType) => {
   return (
     <Modal show={showModal} onClose={() => setShowModal(false)}>
@@ -256,6 +274,22 @@ const NewEquipmentForm = ({
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="comment"
+          >
+            Comment
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="comment"
+            type="text"
+            name="comment"
+            value={equipment.comment}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="manufacturer"
           >
             Manufacturer
@@ -288,6 +322,12 @@ const NewEquipmentForm = ({
 
         <EquipmentStatusDropdown
           status={equipment.status}
+          handleInputChange={handleInputChange}
+        />
+
+        <EquipmentLabDropdown
+          labId={equipment.labId}
+          laboratories={laboratories}
           handleInputChange={handleInputChange}
         />
         <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 mb-4 rounded">
