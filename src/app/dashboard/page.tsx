@@ -8,9 +8,11 @@ import { LabType } from "@/libs/types/lab.type";
 import { X } from "lucide-react";
 import SidePanel from "../components/SidePanel";
 import LaboratoryMetricCard from "../components/cards/Laboratory-Metric";
+import { EquipmentType } from "@/libs/types/equip.type";
 
 export default function Dashboard() {
-  const [labs, setLabs] = useState<LabType[]>([]);
+  const [equip, setEquip] = useState<EquipmentType[]>([]);
+  const [equipCount, setEquipCount] = useState(0);
   const [loading, setLoading] = useState(true);
   const [sidePanelOpen, setSidePanelOpen] = useState(false);
 
@@ -19,10 +21,12 @@ export default function Dashboard() {
   };
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API}/lab/`)
+    fetch(`${process.env.NEXT_PUBLIC_API}/equipment/`)
       .then((response) => response.json())
       .then((data) => {
-        setLabs(data.labs);
+        console.log(data);
+        setEquipCount(data.length);
+        setEquip(data);
         setLoading(false);
       });
   }, []);
@@ -58,28 +62,28 @@ export default function Dashboard() {
               <LaboratoryMetricCard
                 id={1}
                 title="Total Equipment"
-                total={20}
+                total={equipCount}
                 color="bg-blue-500"
                 key={1}
               />
               <LaboratoryMetricCard
                 id={1}
                 title="Functional"
-                total={20}
+                total={1}
                 color="bg-green-500"
                 key={1}
               />
               <LaboratoryMetricCard
                 id={1}
                 title="Out of Service"
-                total={20}
+                total={0}
                 color="bg-red-500"
                 key={1}
               />
               <LaboratoryMetricCard
                 id={1}
                 title="Expiring Reagents"
-                total={20}
+                total={0}
                 color="bg-amber-500"
                 key={1}
               />
