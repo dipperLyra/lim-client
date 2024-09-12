@@ -6,7 +6,6 @@ import SidePanel from "../components/SidePanel";
 import { LabType } from "@/libs/types/lab.type";
 import { useRouter } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import Link from "next/link";
 import LaboratoryCard from "../components/cards/Laboratory";
 
 export default function LabSetup() {
