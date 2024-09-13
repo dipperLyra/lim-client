@@ -221,6 +221,7 @@ const NewEquipmentForm = ({
             name="name"
             value={equipment.name}
             onChange={handleInputChange}
+            required
           />
         </div>
         <div className="mb-4">
@@ -237,6 +238,7 @@ const NewEquipmentForm = ({
             name="serialNumber"
             value={equipment.serialNumber}
             onChange={handleInputChange}
+            required
           />
         </div>
         <div className="mb-4">
@@ -253,6 +255,7 @@ const NewEquipmentForm = ({
             name="description"
             value={equipment.description}
             onChange={handleInputChange}
+            required
           />
         </div>
         <div className="mb-4">
@@ -285,6 +288,7 @@ const NewEquipmentForm = ({
             name="manufacturer"
             value={equipment.manufacturer}
             onChange={handleInputChange}
+            required
           />
         </div>
         <div className="mb-4">
@@ -301,6 +305,7 @@ const NewEquipmentForm = ({
             name="model"
             value={equipment.model}
             onChange={handleInputChange}
+            required
           />
         </div>
 

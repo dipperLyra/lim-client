@@ -41,7 +41,7 @@ const SidePanel2 = ({ isOpen, togglePanel }: SidePanelProps) => {
               <li>
                 <a
                   href="#"
-                  className="flex items-center p-2 text-gray-600 hover:bg-gray-100 rounded"
+                  className="flex items-center p-2 text-[#14203d] hover:bg-gray-100 rounded"
                 >
                   <Home className="h-5 w-5 mr-2" />
                   <Link href={`/dashboard`}>Dashboard</Link>
@@ -50,7 +50,7 @@ const SidePanel2 = ({ isOpen, togglePanel }: SidePanelProps) => {
               <li>
                 <a
                   href="#"
-                  className="flex items-center p-2 text-gray-600 hover:bg-gray-100 rounded"
+                  className="flex items-center p-2 text-[#14203d] hover:bg-gray-100 rounded"
                 >
                   <Beaker className="h-5 w-5 mr-2" />
                   <Link href={`/labs`}>Laboratory</Link>
@@ -59,7 +59,7 @@ const SidePanel2 = ({ isOpen, togglePanel }: SidePanelProps) => {
               <li>
                 <a
                   href="#"
-                  className="flex items-center p-2 text-gray-600 hover:bg-gray-100 rounded"
+                  className="flex items-center p-2 text-[#14203d] hover:bg-gray-100 rounded"
                 >
                   <Hammer className="h-5 w-5 mr-2" />
                   <Link href={`/equipment`}>Equipment</Link>
@@ -68,7 +68,7 @@ const SidePanel2 = ({ isOpen, togglePanel }: SidePanelProps) => {
               <li>
                 <a
                   href="#"
-                  className="flex items-center p-2 text-gray-600 hover:bg-gray-100 rounded"
+                  className="flex items-center p-2 text-[#14203d] hover:bg-gray-100 rounded"
                 >
                   <TestTubeDiagonal className="h-5 w-5 mr-2" />
                   Reagent
@@ -77,7 +77,7 @@ const SidePanel2 = ({ isOpen, togglePanel }: SidePanelProps) => {
               <li>
                 <a
                   href="#"
-                  className="flex items-center p-2 text-gray-600 hover:bg-gray-100 rounded"
+                  className="flex items-center p-2 text-[#14203d] hover:bg-gray-100 rounded"
                 >
                   <Users className="h-5 w-5 mr-2" />
                   Users
@@ -86,7 +86,7 @@ const SidePanel2 = ({ isOpen, togglePanel }: SidePanelProps) => {
               <li>
                 <a
                   href="#"
-                  className="flex items-center p-2 text-gray-600 hover:bg-gray-100 rounded"
+                  className="flex items-center p-2 text-[#14203d] hover:bg-gray-100 rounded"
                 >
                   <Settings className="h-5 w-5 mr-2" />
                   Settings
