@@ -6,6 +6,7 @@ import {
   Beaker,
   Hammer,
   TestTubeDiagonal,
+  Home,
 } from "lucide-react";
 import Link from "next/link";
 interface SidePanelProps {
@@ -37,6 +38,15 @@ const SidePanel2 = ({ isOpen, togglePanel }: SidePanelProps) => {
         <div className="p-4">
           <nav className="mt-20">
             <ul className="space-y-2">
+              <li>
+                <a
+                  href="#"
+                  className="flex items-center p-2 text-gray-600 hover:bg-gray-100 rounded"
+                >
+                  <Home className="h-5 w-5 mr-2" />
+                  <Link href={`/dashboard`}>Dashboard</Link>
+                </a>
+              </li>
               <li>
                 <a
                   href="#"
