@@ -120,6 +120,15 @@ export default function Equipment() {
       <div className="flex-1 flex flex-col overflow-hidden">
         <DashboardHeader />
         <div className="container mx-auto p-4">
+          {/* Button to trigger modal */}
+          <div className="flex justify-start mb-4">
+            <button
+              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+              onClick={() => setShowModal(true)}
+            >
+              New Equipment
+            </button>
+          </div>
           <table className="w-full border-collapse border border-gray-200">
             <thead>
               <tr>
