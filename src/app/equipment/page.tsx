@@ -108,7 +108,7 @@ export default function Equipment() {
   }, [isFetch]);
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-gray-100">
       <div className="lg:w-64">
         <SidePanel2
           isOpen={sidePanelOpen}
@@ -117,7 +117,7 @@ export default function Equipment() {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-1 flex flex-col overflow-y-auto">
         <DashboardHeader />
         <div className="container mx-auto p-4">
           {/* Button to trigger modal */}

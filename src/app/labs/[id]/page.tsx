@@ -4,8 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import DashboardHeader from "../../components/Header";
 import { LabType } from "@/libs/types/lab.type";
-import SidePanel from "@/app/components/SidePanel";
-import { X } from "lucide-react";
+import SidePanel2 from "@/app/components/SidePanel2";
 
 const LabDetails = () => {
   const { id } = useParams();
@@ -30,29 +29,16 @@ const LabDetails = () => {
   }, [id]);
 
   return (
-    <div className="flex h-screen bg-gray-100">
-      {/* Side Panel for larger screens */}
-      <div className="hidden md:block w-64">
-        <SidePanel />
-      </div>
-
-      {/* Side Panel for mobile screens */}
-      <div
-        className={`md:hidden fixed inset-y-0 left-0 z-30 w-64 bg-white shadow-lg transform ${sidePanelOpen ? "translate-x-0" : "-translate-x-full"} transition-transform duration-300 ease-in-out`}
-      >
-        <div className="p-4">
-          <button
-            onClick={handleSidePanelToggle}
-            className="absolute top-4 right-4"
-          >
-            <X className="h-6 w-6 text-gray-600" />
-          </button>
-          <SidePanel />
-        </div>
+    <div className="flex min-h-screen bg-gray-100">
+      <div className="lg:w-64">
+        <SidePanel2
+          isOpen={sidePanelOpen}
+          togglePanel={handleSidePanelToggle}
+        />
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-1 flex flex-col overflow-y-auto">
         <DashboardHeader />
         <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100">
           <div className="container mx-auto p-4">
