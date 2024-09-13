@@ -4,10 +4,9 @@ import React, { useState, useEffect } from "react";
 
 import DashboardHeader from "../components/Header";
 
-import { X } from "lucide-react";
-import SidePanel from "../components/SidePanel";
 import LaboratoryMetricCard from "../components/cards/Laboratory-Metric";
 import { EquipmentStatsType } from "@/libs/types/stats.type";
+import SidePanel2 from "../components/SidePanel2";
 
 export default function Dashboard() {
   const [equipStat, setEquipStat] = useState<EquipmentStatsType>({
@@ -32,24 +31,11 @@ export default function Dashboard() {
 
   return (
     <div className="flex h-screen bg-gray-100">
-      {/* Side Panel for larger screens */}
-      <div className="hidden md:block w-64">
-        <SidePanel />
-      </div>
-
-      {/* Side Panel for mobile screens */}
-      <div
-        className={`md:hidden fixed inset-y-0 left-0 z-30 w-64 bg-white shadow-lg transform ${sidePanelOpen ? "translate-x-0" : "-translate-x-full"} transition-transform duration-300 ease-in-out`}
-      >
-        <div className="p-4">
-          <button
-            onClick={handleSidePanelToggle}
-            className="absolute top-4 right-4"
-          >
-            <X className="h-6 w-6 text-gray-600" />
-          </button>
-          <SidePanel />
-        </div>
+      <div className="lg:w-64">
+        <SidePanel2
+          isOpen={sidePanelOpen}
+          togglePanel={handleSidePanelToggle}
+        />
       </div>
 
       {/* Main Content */}
