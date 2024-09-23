@@ -71,7 +71,7 @@ const SidePanel2 = ({ isOpen, togglePanel }: SidePanelProps) => {
                   className="flex items-center p-2 text-[#14203d] hover:bg-gray-100 rounded"
                 >
                   <TestTubeDiagonal className="h-5 w-5 mr-2" />
-                  Reagent
+                  <Link href={`/reagent`}>Reagent</Link>
                 </a>
               </li>
               <li>

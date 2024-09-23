@@ -13,3 +13,10 @@ export interface EquipmentType {
 export interface StatusType {
   status: string;
 }
+
+export interface LabEquipmentStatusType {
+  laboratory: string;
+  totalEquipments: number;
+  functionalEquipments: number;
+  nonFunctionalEquipments: number;
+}
