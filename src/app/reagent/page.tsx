@@ -5,23 +5,17 @@ import React, { useState, useEffect } from "react";
 import DashboardHeader from "../components/Header";
 
 import { toast } from "react-toastify";
-import { EquipmentType } from "@/libs/types/equip.type";
-import { LabType } from "@/libs/types/lab.type";
 import SidePanel2 from "../components/SidePanel2";
+import { NewMetricForm } from "../components/forms/NewMetricForm";
+import { MetricType } from "@/libs/types/metric.type";
 
 export default function Reagent() {
-  const [equip, setEquip] = useState<EquipmentType[]>([]);
-  const [equipForm, setEquipForm] = useState<EquipmentType>({
+  const [metricForm, setMetricForm] = useState<MetricType>({
     name: "",
-    status: "",
-    description: "",
-    manufacturer: "",
-    model: "",
-    serialNumber: "",
-    labId: "",
-    comment: "",
+    symbol: "",
+    type: undefined,
   });
-  const [laboratories, setLaboratories] = useState<LabType[]>([]);
+
   const [sidePanelOpen, setSidePanelOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [isFetch, setIsFetch] = useState(false);
@@ -31,7 +25,7 @@ export default function Reagent() {
   };
 
   const handleInputChange = (e: any) => {
-    setEquipForm((prevDetails) => ({
+    setMetricForm((prevDetails) => ({
       ...prevDetails,
       [e.target.name]: e.target.value,
     }));
@@ -39,18 +33,13 @@ export default function Reagent() {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    const formData: EquipmentType = {
-      name: equipForm.name,
-      status: equipForm.status,
-      description: equipForm.description,
-      manufacturer: equipForm.manufacturer,
-      model: equipForm.model,
-      serialNumber: equipForm.serialNumber,
-      labId: equipForm.labId,
-      comment: equipForm.comment,
+    const formData: MetricType = {
+      name: metricForm.name,
+      symbol: metricForm.symbol,
+      type: metricForm.type,
     };
 
-    fetch(`${process.env.NEXT_PUBLIC_API}/equipment/`, {
+    fetch(`${process.env.NEXT_PUBLIC_API}/metrics/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -59,49 +48,19 @@ export default function Reagent() {
     })
       .then((response) => response.json())
       .then((data) => {
-        toast.success("Equipment created successfully!");
-        setEquipForm({
+        toast.success(data.message);
+        setMetricForm({
           name: "",
-          status: "",
-          description: "",
-          manufacturer: "",
-          model: "",
-          serialNumber: "",
-          comment: "",
+          symbol: "",
+          type: undefined,
         });
         setShowModal(false);
         setIsFetch(true);
       })
       .catch((error) => {
-        toast.error("Error creating lab: " + error.message);
+        toast.error("Error creating metric: " + error.message);
       });
   };
-
-  useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API}/equipment/`)
-      .then((response) => response.json())
-      .then((data) => {
-        const arr: EquipmentType[] = [];
-        data.map((equipment: EquipmentType) => {
-          arr.push({
-            name: equipment.name,
-            status: equipment.status,
-            description: equipment.description,
-            manufacturer: equipment.manufacturer,
-            model: equipment.model,
-            serialNumber: equipment.serialNumber,
-            comment: equipment.comment,
-          });
-        });
-        setEquip(arr);
-      });
-
-    fetch(`${process.env.NEXT_PUBLIC_API}/lab/`)
-      .then((response) => response.json())
-      .then((data) => {
-        setLaboratories(data.labs);
-      });
-  }, [isFetch]);
 
   return (
     <div className="flex min-h-screen bg-gray-100">
@@ -116,6 +75,23 @@ export default function Reagent() {
       <div className="flex-1 flex flex-col overflow-y-auto">
         <DashboardHeader />
         <div className="container mx-auto p-4">
+          <div className="flex justify-start mt-4">
+            <button
+              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+              onClick={() => setShowModal(true)}
+            >
+              Metric Setup
+            </button>
+          </div>
+
+          <NewMetricForm
+            showModal={showModal}
+            setShowModal={setShowModal}
+            handleInputChange={handleInputChange}
+            metric={metricForm}
+            handleSubmit={handleSubmit}
+          />
+
           <div className="flex justify-start mb-4">
             <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
               New Reagent

@@ -1,30 +1,30 @@
 interface EquipmentFormProps {
-  status: string;
+  type: string;
   handleInputChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
-export const EquipmentStatusDropdown: React.FC<EquipmentFormProps> = ({
-  status,
+export const MetricTypeDropdown: React.FC<EquipmentFormProps> = ({
+  type,
   handleInputChange,
 }) => {
   return (
     <div className="mb-4">
       <label
         className="block text-gray-700 text-sm font-bold mb-2"
-        htmlFor="status"
+        htmlFor="metricType"
       >
-        Status
+        Metric Type
       </label>
       <select
         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        id="status"
-        name="status"
-        value={status}
+        id="metricType"
+        name="type"
+        value={type}
         onChange={handleInputChange}
       >
-        <option value="">Select a status</option>
-        <option value="functional">Functional</option>
-        <option value="non-functional">Non-functional</option>
+        <option value="">Select a metric type</option>
+        <option value="volume">Volume</option>
+        <option value="weight">Weight</option>
       </select>
     </div>
   );
