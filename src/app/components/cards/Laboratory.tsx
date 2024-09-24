@@ -12,7 +12,7 @@ const LaboratoryCard = ({ name, location, id }: LaboratoryCardProps) => {
       <h2 className="text-xl font-semibold mb-2">{name}</h2>
       <p className="text-gray-700 mb-4">Location: {location}</p>
       <Link
-        href={`/labs/${id}`}
+        href={`/equipment/all?labId=${id}&laboratory=${name}`}
         className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
       >
         View Details

@@ -5,7 +5,7 @@ import EquipmentCard from "@/app/components/cards/EquipmentCard";
 import DashboardHeader from "@/app/components/Header";
 import SidePanel2 from "@/app/components/SidePanel2";
 
-export default function EquipmentStatusPage() {
+export default function NonFunctionalEquipmentPage() {
   const [sidePanelOpen, setSidePanelOpen] = useState(false);
   const [equipments, setEquipments] = useState([]);
   const [laboratory, setLaboratory] = useState("");
@@ -22,7 +22,7 @@ export default function EquipmentStatusPage() {
         );
         if (labId) {
           url.searchParams.set("labId", labId);
-          url.searchParams.set("status", "functional");
+          url.searchParams.set("status", "all");
 
           const response = await fetch(url.href);
           const data = await response.json();
@@ -56,11 +56,11 @@ export default function EquipmentStatusPage() {
       <div className="flex-1 flex flex-col overflow-y-auto">
         <DashboardHeader />
         <div className="p-4">
-          {" "}
           <h2 className="text-2xl font-extrabold text-gray-800 mb-6 flex items-center space-x-2">
             <span className="text-blue-500">{laboratory}</span>
-            <span className="text-gray-500">- Functional Equipments</span>
+            <span className="text-gray-500">- Equipments</span>
           </h2>
+
           <Suspense fallback={<div>Loading equipments...</div>}>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {equipments.map((equipment: any) => (

@@ -3,9 +3,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import DashboardHeader from "../components/Header";
 import { Modal } from "../components/modals";
-import SidePanel from "../components/SidePanel";
 import { LabType } from "@/libs/types/lab.type";
-import { Menu, X } from "lucide-react";
 import LaboratoryCard from "../components/cards/Laboratory";
 import SidePanel2 from "../components/SidePanel2";
 
