@@ -120,73 +120,10 @@ export default function Reagent() {
         <div className="container mx-auto p-4">
           {/* Button to trigger modal */}
           <div className="flex justify-start mb-4">
-            <button
-              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
-              onClick={() => setShowModal(true)}
-            >
-              New Equipment
+            <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+              New Reagent
             </button>
           </div>
-          <table className="w-full border-collapse border border-gray-200">
-            <thead>
-              <tr>
-                <th className="px-4 py-2 border border-gray-200 bg-gray-100 text-left">
-                  S/N
-                </th>
-                <th className="px-4 py-2 border border-gray-200 bg-gray-100 text-left">
-                  Name
-                </th>
-                <th className="px-4 py-2 border border-gray-200 bg-gray-100 text-left">
-                  Status
-                </th>
-                <th className="px-4 py-2 border border-gray-200 bg-gray-100 text-left">
-                  Action
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {equip.map((equip, index) => (
-                <tr key={equip.id}>
-                  <td className="px-4 py-2 border border-gray-200">
-                    {index + 1}
-                  </td>
-                  <td className="px-4 py-2 border border-gray-200">
-                    {equip.name}
-                  </td>
-                  <td className="px-4 py-2 border border-gray-200">
-                    {equip.status}
-                  </td>
-                  <td className="px-4 py-2 border border-gray-200">
-                    <Link
-                      href={`#`}
-                      className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
-                    >
-                      Edit
-                    </Link>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-
-          {/* Button to trigger modal */}
-          <div className="flex justify-end mt-4">
-            <button
-              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
-              onClick={() => setShowModal(true)}
-            >
-              New Equipment
-            </button>
-          </div>
-
-          <NewEquipmentForm
-            showModal={showModal}
-            setShowModal={setShowModal}
-            handleInputChange={handleInputChange}
-            equipment={equipForm}
-            handleSubmit={handleSubmit}
-            laboratories={laboratories}
-          />
         </div>
       </div>
     </div>
