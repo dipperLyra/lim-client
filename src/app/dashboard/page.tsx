@@ -86,7 +86,7 @@ export default function Dashboard() {
               />
               <LaboratoryMetricCard
                 id={1}
-                title="Out of Service"
+                title="Non-Functional"
                 total={equipStat.nonFunctionalEquipmentCount}
                 color="bg-red-500"
                 key={1}

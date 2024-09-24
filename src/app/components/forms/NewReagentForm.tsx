@@ -22,7 +22,7 @@ export const NewReagentForm = ({
 }: NewReagentFormType) => {
   return (
     <Modal show={showModal} onClose={() => setShowModal(false)}>
-      <h1 className="text-xl font-bold">Setup Metric</h1>
+      <h1 className="text-xl font-bold">New Reagent Form</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label
