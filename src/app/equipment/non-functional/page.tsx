@@ -1,0 +1,76 @@
+"use client";
+
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
+import EquipmentCard from "@/app/components/cards/EquipmentCard";
+import DashboardHeader from "@/app/components/Header";
+import SidePanel2 from "@/app/components/SidePanel2";
+
+export default function NonFunctionalEquipmentPage() {
+  const [sidePanelOpen, setSidePanelOpen] = useState(false);
+  const [equipments, setEquipments] = useState([]);
+  const [laboratory, setLaboratory] = useState("");
+
+  const handleSidePanelToggle = () => {
+    setSidePanelOpen(!sidePanelOpen);
+  };
+
+  useEffect(() => {
+    const fetchEquipments = async (labId: string) => {
+      try {
+        const url = new URL(
+          `${process.env.NEXT_PUBLIC_API}/lab/equipments/details`,
+        );
+        if (labId) {
+          url.searchParams.set("labId", labId);
+          url.searchParams.set("status", "non-functional");
+
+          const response = await fetch(url.href);
+          const data = await response.json();
+          setEquipments(data.equipments);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const labId = params.get("labId");
+    const labName = params.get("laboratory");
+
+    if (labId) {
+      fetchEquipments(labId);
+      setLaboratory(labName || "");
+    }
+  }, []);
+
+  return (
+    <div className="flex min-h-screen bg-gray-100">
+      <div className="lg:w-64">
+        <SidePanel2
+          isOpen={sidePanelOpen}
+          togglePanel={handleSidePanelToggle}
+        />
+      </div>
+
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col overflow-y-auto">
+        <DashboardHeader />
+        <div className="p-4">
+          <h2 className="text-2xl font-extrabold text-gray-800 mb-6 flex items-center space-x-2">
+            <span className="text-blue-500">{laboratory}</span>
+            <span className="text-gray-500">- Non-Functional Equipments</span>
+          </h2>
+
+          <Suspense fallback={<div>Loading equipments...</div>}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {equipments.map((equipment: any) => (
+                <EquipmentCard key={equipment.id} equipment={equipment} />
+              ))}
+            </div>
+          </Suspense>
+        </div>
+      </div>
+    </div>
+  );
+}
