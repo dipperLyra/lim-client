@@ -30,9 +30,9 @@ const DashboardHeader = () => {
             <div className="bg-white rounded-full p-1 mb-1 mr-2">
               <User className="text-blue-900" size={28} />
             </div>
-            <div className="text-2xl">
+            {/*<div className="text-2xl">
               <span>&#128276;</span>
-            </div>
+            </div>*/}
           </div>
           <div className="text-center">
             <div className="text-xl font-medium">Standard Organisation</div>
