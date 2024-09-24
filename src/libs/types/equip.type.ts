@@ -15,8 +15,9 @@ export interface StatusType {
 }
 
 export interface LabEquipmentStatusType {
+  laboratoryId?: number;
   laboratory: string;
   totalEquipments: number;
-  functionalEquipments: number;
-  nonFunctionalEquipments: number;
+  functionalEquipments: EquipmentType[];
+  nonFunctionalEquipments: EquipmentType[];
 }

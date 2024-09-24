@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 
 import DashboardHeader from "../components/Header";
 
@@ -37,12 +38,12 @@ export default function Dashboard() {
         );
         const functionalEquipments = data.labEquipmentStatus.reduce(
           (acc: number, lab: LabEquipmentStatusType) =>
-            acc + lab.functionalEquipments,
+            acc + lab.functionalEquipments.length,
           0,
         );
         const nonFunctionalEquipments = data.labEquipmentStatus.reduce(
           (acc: number, lab: LabEquipmentStatusType) =>
-            acc + lab.nonFunctionalEquipments,
+            acc + lab.nonFunctionalEquipments.length,
           0,
         );
 
@@ -144,11 +145,19 @@ export default function Dashboard() {
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         {lab.totalEquipments}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-green-500">
-                        {lab.functionalEquipments}
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-green-500 cursor-pointer">
+                        <Link
+                          href={`/equipment/functional?labId=${lab.laboratoryId}&laboratory=${lab.laboratory}`}
+                        >
+                          {lab.functionalEquipments.length}
+                        </Link>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-red-500">
-                        {lab.nonFunctionalEquipments}
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-red-500 cursor-pointer">
+                        <Link
+                          href={`/equipment/non-functional?labId=${lab.laboratoryId}&laboratory=${lab.laboratory}`}
+                        >
+                          {lab.nonFunctionalEquipments.length}
+                        </Link>
                       </td>
                     </tr>
                   ))}
