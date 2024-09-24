@@ -6,10 +6,8 @@ import DashboardHeader from "../components/Header";
 
 import { toast } from "react-toastify";
 import { EquipmentType } from "@/libs/types/equip.type";
-import Link from "next/link";
 import { LabType } from "@/libs/types/lab.type";
 import SidePanel2 from "../components/SidePanel2";
-import { NewEquipmentForm } from "../components/forms/NewEquipmentForm";
 
 export default function Reagent() {
   const [equip, setEquip] = useState<EquipmentType[]>([]);
