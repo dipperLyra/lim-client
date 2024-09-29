@@ -15,7 +15,7 @@ import { NewReagentReportForm } from "../components/forms/NewReagentReportForm";
 import useReagent from "@/libs/hooks/use-reagent";
 import useMetric from "@/libs/hooks/use-metric";
 import ReagentTable from "../components/tables/reagent.table";
-import useReagentReport from "@/libs/hooks/use-reagent-report";
+import { useReagentReport } from "@/libs/hooks/use-reagent-report";
 
 export default function Reagent() {
   const { laboratories } = useLab();

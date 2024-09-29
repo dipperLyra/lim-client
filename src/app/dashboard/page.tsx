@@ -9,8 +9,11 @@ import LaboratoryMetricCard from "../components/cards/Laboratory-Metric";
 import { EquipmentStatsType } from "@/libs/types/stats.type";
 import SidePanel2 from "../components/SidePanel2";
 import { LabEquipmentStatusType } from "@/libs/types/equip.type";
+import ReagentReportTable from "../components/tables/reagent-report.table";
+import { useReagentReportTable } from "@/libs/hooks/use-reagent-report";
 
 export default function Dashboard() {
+  const { reagentReportTable } = useReagentReportTable();
   const [equipStat, setEquipStat] = useState<EquipmentStatsType>({
     functionalEquipmentCount: 0,
     nonFunctionalEquipmentCount: 0,
@@ -126,13 +129,18 @@ export default function Dashboard() {
                       scope="col"
                       className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
                     >
-                      Functional Equipments
+                      <p className="bg-green-500 text-white rounded-full py-2 px-4 text-sm">
+                        Functional Equipments
+                      </p>
                     </th>
                     <th
                       scope="col"
                       className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
                     >
-                      Non-Functional Equipments
+                      <p className="bg-red-500 text-white rounded-full py-2 px-4 text-sm">
+                        Non-Functional Equipments
+                      </p>
+                      <p className=""></p>
                     </th>
                   </tr>
                 </thead>
@@ -163,6 +171,17 @@ export default function Dashboard() {
                   ))}
                 </tbody>
               </table>
+            </div>
+          </div>
+
+          <div className="p-4">
+            <h2 className="text-lg font-bold mb-4">
+              Laboratory Reagent Status
+            </h2>
+
+            <div className="overflow-x-auto rounded-lg shadow-md">
+              <ReagentReportTable reports={reagentReportTable!} />
+              {/*table */}
             </div>
           </div>
         </main>

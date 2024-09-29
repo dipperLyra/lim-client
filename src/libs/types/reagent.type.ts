@@ -1,4 +1,5 @@
 import { LabType } from "./lab.type";
+import { MetricType } from "./metric.type";
 
 export interface ReagentType {
   id?: number;
@@ -29,4 +30,7 @@ export interface ReagentReportTableType {
   name: string;
   status: string;
   expiryDate: Date;
+  quantity?: number;
+  metric?: MetricType;
+  laboratory?: string;
 }
