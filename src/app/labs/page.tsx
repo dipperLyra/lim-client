@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import DashboardHeader from "../components/Header";
 import { Modal } from "../components/modals";
-import { LabType } from "@/libs/types/lab.type";
 import LaboratoryCard from "../components/cards/Laboratory";
 import SidePanel2 from "../components/SidePanel2";
+import useLab from "@/libs/hooks/use-lab";
 
 export default function LabSetup() {
   const [labDetails, setLabDetails] = useState({
@@ -14,9 +14,8 @@ export default function LabSetup() {
     state: "",
     country: "",
   });
-  const [labs, setLabs] = useState<LabType[]>([]);
+  const { laboratories } = useLab();
   const [isFetch, setIsFetch] = useState(false);
-  const [loading, setLoading] = useState(true);
   const [sidePanelOpen, setSidePanelOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
@@ -59,15 +58,6 @@ export default function LabSetup() {
       });
   };
 
-  useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API}/lab/`)
-      .then((response) => response.json())
-      .then((data) => {
-        setLabs(data.labs);
-        setLoading(false);
-      });
-  }, [isFetch]);
-
   return (
     <div className="flex min-h-screen bg-gray-100">
       <div className="lg:w-64">
@@ -84,20 +74,16 @@ export default function LabSetup() {
           <div className="flex justify-between items-center mb-4">
             <h1 className="text-3xl font-bold">Laboratories</h1>
           </div>
-          {loading ? (
-            <p>Loading...</p>
-          ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {labs.map((lab) => (
-                <LaboratoryCard
-                  key={lab.id}
-                  id={lab.id}
-                  name={lab.name}
-                  location={`${lab.state}`}
-                />
-              ))}
-            </div>
-          )}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {laboratories?.map((lab) => (
+              <LaboratoryCard
+                key={lab.id}
+                id={lab.id}
+                name={lab.name}
+                location={`${lab.state}`}
+              />
+            ))}
+          </div>
 
           {/* Button to trigger modal */}
           <div className="flex justify-end mt-4">

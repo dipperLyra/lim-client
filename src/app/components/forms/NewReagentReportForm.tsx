@@ -30,7 +30,7 @@ export const NewReagentReportForm = ({
 }: NewReagentReportFormType) => {
   return (
     <Modal show={showModal} onClose={() => setShowModal(false)}>
-      <h1 className="text-xl font-bold">New Reagent Report Form</h1>
+      <h1 className="text-xl font-bold">Reagent Stock Form</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label

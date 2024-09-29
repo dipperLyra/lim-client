@@ -17,9 +17,7 @@ export default function EquipmentStatusPage() {
   useEffect(() => {
     const fetchEquipments = async (labId: string) => {
       try {
-        const url = new URL(
-          `${process.env.NEXT_PUBLIC_API}/lab/equipments/details`,
-        );
+        const url = new URL(`${process.env.NEXT_PUBLIC_API}/lab/assets`);
         if (labId) {
           url.searchParams.set("labId", labId);
           url.searchParams.set("status", "functional");

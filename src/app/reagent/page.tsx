@@ -207,12 +207,13 @@ export default function Reagent() {
                 className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
                 onClick={() => setShowReagentReportModal(true)}
               >
-                Update Reagent
+                Reagent Stock
               </button>
             </div>
           </div>
 
-          <div>
+          <div className="p-4">
+            <h2 className="text-lg font-bold mb-4">Reagents</h2>
             <ReagentTable reports={reagentReport!} />
           </div>
 
