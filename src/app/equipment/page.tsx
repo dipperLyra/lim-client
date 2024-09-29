@@ -7,12 +7,12 @@ import DashboardHeader from "../components/Header";
 import { toast } from "react-toastify";
 import { EquipmentType } from "@/libs/types/equip.type";
 import Link from "next/link";
-import { LabType } from "@/libs/types/lab.type";
 import SidePanel2 from "../components/SidePanel2";
 import { NewEquipmentForm } from "../components/forms/NewEquipmentForm";
+import useLab from "@/libs/hooks/use-lab";
+import useEquipment from "@/libs/hooks/use-equipment";
 
 export default function Equipment() {
-  const [equip, setEquip] = useState<EquipmentType[]>([]);
   const [equipForm, setEquipForm] = useState<EquipmentType>({
     name: "",
     status: "",
@@ -23,10 +23,10 @@ export default function Equipment() {
     labId: "",
     comment: "",
   });
-  const [laboratories, setLaboratories] = useState<LabType[]>([]);
+  const { laboratories } = useLab();
+  const { equip, setIsFetch } = useEquipment();
   const [sidePanelOpen, setSidePanelOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [isFetch, setIsFetch] = useState(false);
 
   const handleSidePanelToggle = () => {
     setSidePanelOpen(!sidePanelOpen);
@@ -78,32 +78,6 @@ export default function Equipment() {
         toast.error("Error creating lab: " + error.message);
       });
   };
-
-  useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API}/equipment/`)
-      .then((response) => response.json())
-      .then((data) => {
-        const arr: EquipmentType[] = [];
-        data.map((equipment: EquipmentType) => {
-          arr.push({
-            name: equipment.name,
-            status: equipment.status,
-            description: equipment.description,
-            manufacturer: equipment.manufacturer,
-            model: equipment.model,
-            serialNumber: equipment.serialNumber,
-            comment: equipment.comment,
-          });
-        });
-        setEquip(arr);
-      });
-
-    fetch(`${process.env.NEXT_PUBLIC_API}/lab/`)
-      .then((response) => response.json())
-      .then((data) => {
-        setLaboratories(data.labs);
-      });
-  }, [isFetch]);
 
   return (
     <div className="flex min-h-screen bg-gray-100">
