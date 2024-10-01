@@ -7,7 +7,7 @@ import DashboardHeader from "../components/Header";
 
 import LaboratoryMetricCard from "../components/cards/Laboratory-Metric";
 import { EquipmentStatsType } from "@/libs/types/stats.type";
-import SidePanel2 from "../components/SidePanel2";
+import SidePanel from "../components/SidePanel2";
 import { LabEquipmentStatusType } from "@/libs/types/equip.type";
 import ReagentReportTable from "../components/tables/reagent-report.table";
 import { useReagentReportTable } from "@/libs/hooks/use-reagent-report";
@@ -61,10 +61,7 @@ export default function Dashboard() {
   return (
     <div className="flex min-h-screen bg-gray-100">
       <div className="lg:w-64">
-        <SidePanel2
-          isOpen={sidePanelOpen}
-          togglePanel={handleSidePanelToggle}
-        />
+        <SidePanel isOpen={sidePanelOpen} togglePanel={handleSidePanelToggle} />
       </div>
 
       {/* Main Content */}

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { EquipmentType } from "@/libs/types/equip.type";
 
 const useEquipment = () => {
-  const [equip, setEquip] = useState<EquipmentType[]>([]);
+  const [equipment, setEquipment] = useState<EquipmentType[]>([]);
   const [isFetch, setIsFetch] = useState(false);
   const [error, setError] = useState(null);
 
@@ -23,7 +23,7 @@ const useEquipment = () => {
           serialNumber: equipment.serialNumber,
           comment: equipment.comment,
         }));
-        setEquip(formattedData);
+        setEquipment(formattedData);
       } catch (error: any) {
         setError(error);
       }
@@ -32,7 +32,7 @@ const useEquipment = () => {
     fetchEquipment();
   }, [isFetch]);
 
-  return { equip, isFetch, setIsFetch, error };
+  return { equipment, isFetch, setIsFetch, error };
 };
 
 export default useEquipment;

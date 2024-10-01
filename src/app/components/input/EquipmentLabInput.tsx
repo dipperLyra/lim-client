@@ -29,8 +29,10 @@ export const EquipmentLabDropdown: React.FC<EquipmentFormProps> = ({
         onChange={handleInputChange}
       >
         <option value="">Select a Laboratory</option>
-        {laboratories.map((lab: LabType) => (
-          <option value={lab.id}>{lab.name}</option>
+        {laboratories.map((lab: LabType, index) => (
+          <option key={index + 1} value={lab.id}>
+            {lab.name}
+          </option>
         ))}
       </select>
     </div>

@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import DashboardHeader from "../components/Header";
 
 import { toast } from "react-toastify";
-import SidePanel2 from "../components/SidePanel2";
+import SidePanel from "../components/SidePanel2";
 import { NewMetricForm } from "../components/forms/NewMetricForm";
 import { MetricType } from "@/libs/types/metric.type";
 import { NewReagentForm } from "../components/forms/NewReagentForm";
@@ -179,18 +179,15 @@ export default function Reagent() {
   return (
     <div className="flex min-h-screen bg-gray-100">
       <div className="lg:w-64">
-        <SidePanel2
-          isOpen={sidePanelOpen}
-          togglePanel={handleSidePanelToggle}
-        />
+        <SidePanel isOpen={sidePanelOpen} togglePanel={handleSidePanelToggle} />
       </div>
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-y-auto">
         <DashboardHeader />
         <div className="container mx-auto p-4">
-          <div className="container mx-auto p-4">
-            <div className="flex justify-start mt-4 space-x-4">
+          <div className="container mx-auto">
+            <div className="flex justify-start space-x-4">
               <button
                 className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
                 onClick={() => setShowModal(true)}
@@ -212,10 +209,8 @@ export default function Reagent() {
             </div>
           </div>
 
-          <div className="p-4">
-            <h2 className="text-lg font-bold mb-4">Reagents</h2>
-            <ReagentTable reports={reagentReport!} />
-          </div>
+          <h2 className="text-lg font-bold mb-4 mt-4">Reagents</h2>
+          <ReagentTable reports={reagentReport!} />
 
           <NewMetricForm
             showModal={showModal}

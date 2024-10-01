@@ -7,7 +7,7 @@ import DashboardHeader from "../components/Header";
 import { toast } from "react-toastify";
 import { EquipmentType } from "@/libs/types/equip.type";
 import Link from "next/link";
-import SidePanel2 from "../components/SidePanel2";
+import SidePanel from "../components/SidePanel2";
 import { NewEquipmentForm } from "../components/forms/NewEquipmentForm";
 import useLab from "@/libs/hooks/use-lab";
 import useEquipment from "@/libs/hooks/use-equipment";
@@ -24,7 +24,7 @@ export default function Equipment() {
     comment: "",
   });
   const { laboratories } = useLab();
-  const { equip, setIsFetch } = useEquipment();
+  const { equipment, setIsFetch } = useEquipment();
   const [sidePanelOpen, setSidePanelOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
@@ -82,10 +82,7 @@ export default function Equipment() {
   return (
     <div className="flex min-h-screen bg-gray-100">
       <div className="lg:w-64">
-        <SidePanel2
-          isOpen={sidePanelOpen}
-          togglePanel={handleSidePanelToggle}
-        />
+        <SidePanel isOpen={sidePanelOpen} togglePanel={handleSidePanelToggle} />
       </div>
 
       {/* Main Content */}
@@ -119,7 +116,7 @@ export default function Equipment() {
               </tr>
             </thead>
             <tbody>
-              {equip.map((equip, index) => (
+              {equipment.map((equip, index) => (
                 <tr key={equip.id}>
                   <td className="px-4 py-2 border border-gray-200">
                     {index + 1}

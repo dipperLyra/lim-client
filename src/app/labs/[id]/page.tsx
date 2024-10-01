@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import DashboardHeader from "../../components/Header";
 import { LabType } from "@/libs/types/lab.type";
-import SidePanel2 from "@/app/components/SidePanel2";
+import SidePanel from "@/app/components/SidePanel2";
 
 const LabDetails = () => {
   const { id } = useParams();
@@ -31,10 +31,7 @@ const LabDetails = () => {
   return (
     <div className="flex min-h-screen bg-gray-100">
       <div className="lg:w-64">
-        <SidePanel2
-          isOpen={sidePanelOpen}
-          togglePanel={handleSidePanelToggle}
-        />
+        <SidePanel isOpen={sidePanelOpen} togglePanel={handleSidePanelToggle} />
       </div>
 
       {/* Main Content */}

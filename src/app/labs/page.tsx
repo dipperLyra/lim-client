@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import DashboardHeader from "../components/Header";
 import { Modal } from "../components/modals";
 import LaboratoryCard from "../components/cards/Laboratory";
-import SidePanel2 from "../components/SidePanel2";
+import SidePanel from "../components/SidePanel2";
 import useLab from "@/libs/hooks/use-lab";
 
 export default function LabSetup() {
@@ -61,10 +61,7 @@ export default function LabSetup() {
   return (
     <div className="flex min-h-screen bg-gray-100">
       <div className="lg:w-64">
-        <SidePanel2
-          isOpen={sidePanelOpen}
-          togglePanel={handleSidePanelToggle}
-        />
+        <SidePanel isOpen={sidePanelOpen} togglePanel={handleSidePanelToggle} />
       </div>
 
       {/* Main Content */}

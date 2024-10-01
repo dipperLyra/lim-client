@@ -3,7 +3,7 @@
 import { useState, useEffect, Suspense } from "react";
 import EquipmentCard from "@/app/components/cards/EquipmentCard";
 import DashboardHeader from "@/app/components/Header";
-import SidePanel2 from "@/app/components/SidePanel2";
+import SidePanel from "@/app/components/SidePanel2";
 import ReagentCard from "@/app/components/cards/ReagentCard";
 
 export default function NonFunctionalEquipmentPage() {
@@ -47,10 +47,7 @@ export default function NonFunctionalEquipmentPage() {
   return (
     <div className="flex min-h-screen bg-gray-100">
       <div className="lg:w-64">
-        <SidePanel2
-          isOpen={sidePanelOpen}
-          togglePanel={handleSidePanelToggle}
-        />
+        <SidePanel isOpen={sidePanelOpen} togglePanel={handleSidePanelToggle} />
       </div>
 
       {/* Main Content */}
