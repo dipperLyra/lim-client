@@ -40,7 +40,7 @@ const SidePanel = ({ isOpen, togglePanel }: SidePanelProps) => {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="#"
+                  href="/dashboard"
                   className="flex items-center p-2 text-[#14203d] hover:bg-gray-100 rounded"
                 >
                   <Home className="h-5 w-5 mr-2" />
@@ -49,7 +49,7 @@ const SidePanel = ({ isOpen, togglePanel }: SidePanelProps) => {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/labs"
                   className="flex items-center p-2 text-[#14203d] hover:bg-gray-100 rounded"
                 >
                   <Beaker className="h-5 w-5 mr-2" />
@@ -58,7 +58,7 @@ const SidePanel = ({ isOpen, togglePanel }: SidePanelProps) => {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/equipment"
                   className="flex items-center p-2 text-[#14203d] hover:bg-gray-100 rounded"
                 >
                   <Hammer className="h-5 w-5 mr-2" />
@@ -67,7 +67,7 @@ const SidePanel = ({ isOpen, togglePanel }: SidePanelProps) => {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/reagent"
                   className="flex items-center p-2 text-[#14203d] hover:bg-gray-100 rounded"
                 >
                   <TestTubeDiagonal className="h-5 w-5 mr-2" />
@@ -76,20 +76,11 @@ const SidePanel = ({ isOpen, togglePanel }: SidePanelProps) => {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/user"
                   className="flex items-center p-2 text-[#14203d] hover:bg-gray-100 rounded"
                 >
                   <Users className="h-5 w-5 mr-2" />
                   <Link href={"/user"}>Users</Link>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="flex items-center p-2 text-[#14203d] hover:bg-gray-100 rounded"
-                >
-                  <Settings className="h-5 w-5 mr-2" />
-                  Settings
                 </a>
               </li>
             </ul>
