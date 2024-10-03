@@ -13,30 +13,30 @@ export default function ReagentReportTable({
   reports,
 }: ReagentReportTableProps) {
   return (
-    <table className="w-full table-auto divide-y divide-gray-200">
-      <thead className="bg-gray-200 text-gray-600">
+    <table className="w-full table-auto divide-y divide-gray-200 dark:divide-gray-700 text-gray-800 dark:text-gray-200">
+      <thead className="bg-gray-200 dark:bg-gray-700">
         <tr>
           <th
             scope="col"
-            className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
+            className="px-6 py-3 text-left text-xs font-medium text-gray-600 dark:text-gray-200 uppercase tracking-wider"
           >
             Laboratory
           </th>
           <th
             scope="col"
-            className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
+            className="px-6 py-3 text-left text-xs font-medium text-gray-600 dark:text-gray-200 uppercase tracking-wider"
           >
             Name
           </th>
           <th
             scope="col"
-            className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
+            className="px-6 py-3 text-left text-xs font-medium text-gray-600 dark:text-gray-200 uppercase tracking-wider"
           >
             Status
           </th>
           <th
             scope="col"
-            className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
+            className="px-6 py-3 text-left text-xs font-medium text-gray-600 dark:text-gray-200 uppercase tracking-wider"
           >
             Expiry Date
           </th>

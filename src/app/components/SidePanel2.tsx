@@ -8,6 +8,7 @@ import {
   Home,
 } from "lucide-react";
 import Link from "next/link";
+import { ThemeToggle } from "./ThemeToggle";
 interface SidePanelProps {
   isOpen: boolean;
   togglePanel: any;

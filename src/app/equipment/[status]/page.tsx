@@ -29,7 +29,7 @@ export default function EquipmentStatusPage() {
   }, [status, laboratory]);
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 text-gray-800 dark:text-gray-200">
       <h2 className="text-lg font-bold mb-4">
         {laboratory} -{" "}
         {status === "functional" ? "Functional" : "Non-Functional"} Equipments

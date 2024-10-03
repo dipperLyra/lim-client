@@ -21,9 +21,9 @@ const DashboardHeader = () => {
         <Image src="/bloom-logo.png" alt="Bloom Logo" width={150} height={30} />
       </a>
 
-      <div className="flex items-center space-x-6">
-        <div className="mr-2">
-          <img src="/son-logo.png" alt="SON Logo" className="w-18 h-12" />
+      <div className="flex items-center space-x-2">
+        <div className="relative">
+          <img src="/son-logo.png" alt="SON Logo" className="w-21 h-14" />
         </div>
 
         <div className="relative">

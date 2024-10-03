@@ -45,7 +45,7 @@ export default function NonFunctionalEquipmentPage() {
   }, []);
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-gray-100 text-gray-800 dark:text-gray-200">
       <div className="lg:w-64">
         <SidePanel isOpen={sidePanelOpen} togglePanel={handleSidePanelToggle} />
       </div>
