@@ -11,7 +11,9 @@ const useLab = () => {
   useEffect(() => {
     const fetchLabs = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API}/lab/`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API}/lab/`, {
+          credentials: "include",
+        });
         const data = await response.json();
         setLaboratories(data.labs);
       } catch (error: any) {

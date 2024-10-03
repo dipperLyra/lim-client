@@ -54,6 +54,7 @@ export default function Equipment() {
 
     fetch(`${process.env.NEXT_PUBLIC_API}/equipment/`, {
       method: "POST",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },

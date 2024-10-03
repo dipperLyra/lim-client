@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 import { useState } from "react";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const [email, setEmail] = useState("");
@@ -13,15 +13,19 @@ export default function Home() {
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API}/auth/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
-      const data = await response.json();
-      if (data.token) {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API}/auth/login`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+          credentials: "include",
+        },
+      );
+      if (response.ok) {
         router.push("/dashboard");
       } else {
+        const data = await response.json();
         setError(data.message);
       }
     } catch (error: any) {
@@ -59,9 +63,7 @@ export default function Home() {
           onChange={(e) => setPassword(e.target.value)}
           className="w-full p-2 mb-4 border border-gray-300 rounded-lg"
         />
-        {error && (
-          <p className="text-red-500 mb-4">{error}</p>
-        )}
+        {error && <p className="text-red-500 mb-4">{error}</p>}
         <button
           type="submit"
           className="w-full p-2 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded-lg"

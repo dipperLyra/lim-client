@@ -22,7 +22,7 @@ export default function EquipmentStatusPage() {
           url.searchParams.set("labId", labId);
           url.searchParams.set("status", "functional");
 
-          const response = await fetch(url.href);
+          const response = await fetch(url.href, { credentials: "include" });
           const data = await response.json();
           setEquipments(data.equipments);
         }

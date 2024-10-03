@@ -40,6 +40,7 @@ export default function LabSetup() {
     };
 
     fetch(`${process.env.NEXT_PUBLIC_API}/lab/`, {
+      credentials: "include",
       method: "POST",
       headers: {
         "Content-Type": "application/json",

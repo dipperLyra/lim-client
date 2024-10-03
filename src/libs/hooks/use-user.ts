@@ -11,7 +11,9 @@ const useUser = () => {
   useEffect(() => {
     const fetchLabs = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API}/users/`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API}/users/`, {
+          credentials: "include",
+        });
         const data = await response.json();
         setUsers(data.users);
       } catch (error: any) {

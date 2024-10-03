@@ -12,6 +12,7 @@ const useEquipment = () => {
       try {
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_API}/equipment/`,
+          { credentials: "include" },
         );
         const data = await response.json();
         const formattedData = data.map((equipment: EquipmentType) => ({

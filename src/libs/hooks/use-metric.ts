@@ -11,7 +11,10 @@ const useMetric = () => {
   useEffect(() => {
     const fetchLabs = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API}/metrics/`);
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API}/metrics/`,
+          { credentials: "include" },
+        );
         const data = await response.json();
         setMetrics(data.metrics);
       } catch (error: any) {

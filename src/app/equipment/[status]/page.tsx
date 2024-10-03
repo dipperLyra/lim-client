@@ -15,6 +15,9 @@ export default function EquipmentStatusPage() {
       try {
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_API}/equipments/${status}/${laboratory}`,
+          {
+            credentials: "include",
+          },
         );
         const data = await response.json();
         setEquipments(data.equipments);

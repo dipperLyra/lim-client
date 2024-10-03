@@ -13,6 +13,7 @@ const useReagent = () => {
       try {
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_API}/reagents/`,
+          { credentials: "include" },
         );
         const data = await response.json();
         setReagents(data.reagents);

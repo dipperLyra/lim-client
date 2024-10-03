@@ -84,6 +84,7 @@ export default function Reagent() {
     };
 
     fetch(`${process.env.NEXT_PUBLIC_API}/metrics/`, {
+      credentials: "include",
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -115,6 +116,7 @@ export default function Reagent() {
     };
 
     fetch(`${process.env.NEXT_PUBLIC_API}/reagents/`, {
+      credentials: "include",
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -150,6 +152,7 @@ export default function Reagent() {
     };
 
     fetch(`${process.env.NEXT_PUBLIC_API}/reagents/reports`, {
+      credentials: "include",
       method: "POST",
       headers: {
         "Content-Type": "application/json",

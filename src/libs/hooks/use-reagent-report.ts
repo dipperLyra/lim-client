@@ -14,6 +14,7 @@ export const useReagentReport = () => {
       try {
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_API}/reagents/reports/`,
+          { credentials: "include" },
         );
         const data = await response.json();
         setReagentReport(data.reports);
@@ -38,6 +39,7 @@ export const useReagentReportTable = () => {
       try {
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_API}/reagents/reports-table/`,
+          { credentials: "include" },
         );
         const data = await response.json();
         setReagentReportTable(data.reportsTable);

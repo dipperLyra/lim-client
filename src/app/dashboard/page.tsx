@@ -29,7 +29,9 @@ export default function Dashboard() {
   };
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API}/lab/equipments/status`)
+    fetch(`${process.env.NEXT_PUBLIC_API}/lab/equipments/status`, {
+      credentials: "include",
+    })
       .then((response) => response.json())
       .then((data) => {
         setLabEquipmentStatus(data.labEquipmentStatus);
@@ -55,7 +57,8 @@ export default function Dashboard() {
           functionalEquipmentCount: functionalEquipments,
           nonFunctionalEquipmentCount: nonFunctionalEquipments,
         });
-      });
+      })
+      .catch((error) => console.error(error));
   }, []);
 
   return (
@@ -142,7 +145,7 @@ export default function Dashboard() {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {labEquipmentStatus.map((lab) => (
+                  {labEquipmentStatus?.map((lab) => (
                     <tr key={lab.laboratory}>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                         {lab.laboratory}

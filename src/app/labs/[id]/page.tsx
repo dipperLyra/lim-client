@@ -23,7 +23,9 @@ const LabDetails = () => {
   };
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API}/lab/${id}`)
+    fetch(`${process.env.NEXT_PUBLIC_API}/lab/${id}`, {
+      credentials: "include",
+    })
       .then((response) => response.json())
       .then((data) => setLab(data.lab));
   }, [id]);
