@@ -106,7 +106,7 @@ export default function Dashboard() {
 
           <div className="p-4">
             <h2 className="text-lg font-bold mb-4">
-              Laboratory Equipments Status
+              Laboratory Equipment Status
             </h2>
 
             <div className="overflow-x-auto rounded-lg shadow-md">
@@ -123,14 +123,14 @@ export default function Dashboard() {
                       scope="col"
                       className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
                     >
-                      Total Equipments
+                      Total Equipment
                     </th>
                     <th
                       scope="col"
                       className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
                     >
                       <p className="bg-green-500 text-white rounded-full py-2 px-4 text-sm">
-                        Functional Equipments
+                        Functional Equipment
                       </p>
                     </th>
                     <th
@@ -138,7 +138,7 @@ export default function Dashboard() {
                       className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
                     >
                       <p className="bg-red-500 text-white rounded-full py-2 px-4 text-sm">
-                        Non-Functional Equipments
+                        Non-Functional Equipment
                       </p>
                       <p className=""></p>
                     </th>

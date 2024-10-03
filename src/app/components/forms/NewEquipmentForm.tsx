@@ -23,7 +23,7 @@ export const NewEquipmentForm = ({
 }: NewEquipmentFormType) => {
   return (
     <Modal show={showModal} onClose={() => setShowModal(false)}>
-      <h1 className="text-xl font-bold">New Equipments</h1>
+      <h1 className="text-xl font-bold">New Equipment</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label

@@ -1,5 +1,4 @@
 import {
-  Settings,
   Users,
   Menu,
   X,
