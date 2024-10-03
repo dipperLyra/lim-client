@@ -180,11 +180,10 @@ export default function Reagent() {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-100 text-gray-800 dark:text-gray-200">
+    <div className="flex min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
       <div className="lg:w-64">
         <SidePanel isOpen={sidePanelOpen} togglePanel={handleSidePanelToggle} />
       </div>
-
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-y-auto">
         <DashboardHeader />
@@ -211,10 +210,8 @@ export default function Reagent() {
               </button>
             </div>
           </div>
-
           <h2 className="text-lg font-bold mb-4 mt-4">Reagents</h2>
           <ReagentTable reports={reagentReport!} />
-
           <NewMetricForm
             showModal={showModal}
             setShowModal={setShowModal}
@@ -222,7 +219,6 @@ export default function Reagent() {
             metric={metricForm}
             handleSubmit={handleSubmit}
           />
-
           <NewReagentForm
             showModal={showReagentModal}
             setShowModal={setShowReagentModal}
@@ -231,7 +227,6 @@ export default function Reagent() {
             laboratories={laboratories}
             handleSubmit={handleReagentSubmit}
           />
-
           <NewReagentReportForm
             metricId={reagentReportForm.metricId}
             reagentId={reagentReportForm.reagentId}

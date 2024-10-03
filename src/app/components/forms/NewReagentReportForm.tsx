@@ -30,17 +30,20 @@ export const NewReagentReportForm = ({
 }: NewReagentReportFormType) => {
   return (
     <Modal show={showModal} onClose={() => setShowModal(false)}>
-      <h1 className="text-xl font-bold">Reagent Stock Form</h1>
+      <h1 className="text-xl font-bold dark:text-gray-200">
+        Reagent Stock Form
+      </h1>
+
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label
-            className="block text-gray-700 text-sm font-bold mb-2"
+            className="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2"
             htmlFor="quantity"
           >
             Quantity
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-200 dark:bg-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="quantity"
             type="number"
             name="quantity"
@@ -52,13 +55,13 @@ export const NewReagentReportForm = ({
 
         <div className="mb-4">
           <label
-            className="block text-gray-700 text-sm font-bold mb-2"
+            className="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2"
             htmlFor="comment"
           >
             Comment
           </label>
           <textarea
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-200 dark:bg-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="comment"
             name="comment"
             value={report.comment}
@@ -69,13 +72,13 @@ export const NewReagentReportForm = ({
 
         <div className="mb-4">
           <label
-            className="block text-gray-700 text-sm font-bold mb-2"
+            className="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2"
             htmlFor="purchaseDate"
           >
             Purchased Date
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-200 dark:bg-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="purchaseDate"
             type="date"
             name="purchaseDate"
@@ -87,13 +90,13 @@ export const NewReagentReportForm = ({
 
         <div className="mb-4">
           <label
-            className="block text-gray-700 text-sm font-bold mb-2"
+            className="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2"
             htmlFor="expiryDate"
           >
             Expiry Date
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-200 dark:bg-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="expiryDate"
             type="date"
             name="expiryDate"
@@ -105,13 +108,13 @@ export const NewReagentReportForm = ({
 
         <div className="mb-4">
           <label
-            className="block text-gray-700 text-sm font-bold mb-2"
+            className="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2"
             htmlFor="status"
           >
             Status
           </label>
           <select
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-200 dark:bg-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="status"
             name="status"
             value={report.status}
