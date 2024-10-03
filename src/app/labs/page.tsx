@@ -60,7 +60,7 @@ export default function LabSetup() {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-100 text-gray-800 dark:text-gray-200">
+    <div className="flex min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
       <div className="lg:w-64">
         <SidePanel isOpen={sidePanelOpen} togglePanel={handleSidePanelToggle} />
       </div>
@@ -94,17 +94,17 @@ export default function LabSetup() {
           </div>
 
           <Modal show={showModal} onClose={() => setShowModal(false)}>
-            <h1 className="text-xl font-bold">New Lab</h1>
+            <h1 className="text-xl font-bold dark:text-gray-200">New Lab</h1>
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
+                  className="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2"
                   htmlFor="name"
                 >
                   Name
                 </label>
                 <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-200 dark:bg-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="name"
                   type="text"
                   name="name"
@@ -114,13 +114,13 @@ export default function LabSetup() {
               </div>
               <div className="mb-4">
                 <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
+                  className="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2"
                   htmlFor="address"
                 >
                   Address
                 </label>
                 <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-200 dark:bg-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="address"
                   type="text"
                   name="address"
@@ -130,13 +130,13 @@ export default function LabSetup() {
               </div>
               <div className="mb-4">
                 <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
+                  className="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2"
                   htmlFor="state"
                 >
                   State
                 </label>
                 <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-200 dark:bg-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="state"
                   type="text"
                   name="state"
@@ -146,13 +146,13 @@ export default function LabSetup() {
               </div>
               <div className="mb-4">
                 <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
+                  className="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2"
                   htmlFor="country"
                 >
                   Country
                 </label>
                 <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-200 dark:bg-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="country"
                   type="text"
                   name="country"
