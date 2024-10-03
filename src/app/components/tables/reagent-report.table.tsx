@@ -13,7 +13,7 @@ export default function ReagentReportTable({
   reports,
 }: ReagentReportTableProps) {
   return (
-    <table className="w-full table-auto divide-y divide-gray-200 dark:divide-gray-700 text-gray-800 dark:text-gray-200">
+    <table className="w-full border-collapse border border-gray-200">
       <thead className="bg-gray-200 dark:bg-gray-700">
         <tr>
           <th
