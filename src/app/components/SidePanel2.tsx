@@ -83,9 +83,6 @@ const SidePanel = ({ isOpen, togglePanel }: SidePanelProps) => {
                   <Link href={"/user"}>Users</Link>
                 </a>
               </li>
-              <li>
-                <ThemeToggle />
-              </li>
             </ul>
           </nav>
         </div>

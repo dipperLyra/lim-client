@@ -72,7 +72,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+    <div className="flex min-h-screen bg-gray-100 dark:bg-gray-900">
       <div className="lg:w-64">
         <SidePanel isOpen={sidePanelOpen} togglePanel={handleSidePanelToggle} />
       </div>
@@ -80,24 +80,30 @@ export default function Dashboard() {
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-y-auto">
         <DashboardHeader />
-        <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-4">
-          <button
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 mb-4 rounded"
-            onClick={() => setShowModal(true)}
-          >
-            New User
-          </button>
-          <h2 className="text-lg font-bold mb-4">Users</h2>
-          <UserTable users={users!} />
+        <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 dark:bg-gray-900">
+          <div className="container mx-auto p-4">
+            <button
+              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 mb-4 rounded"
+              onClick={() => setShowModal(true)}
+            >
+              New User
+            </button>
+            <h2 className="text-lg font-bold mb-4 text-gray-800 dark:text-gray-200">
+              Users
+            </h2>
+            <div className="overflow-x-auto rounded-lg shadow-md">
+              <UserTable users={users!} />
+            </div>
 
-          <NewUserForm
-            showModal={showModal}
-            setShowModal={setShowModal}
-            handleInputChange={handleInputChange}
-            user={userForm}
-            laboratories={laboratories}
-            handleSubmit={handleSubmit}
-          />
+            <NewUserForm
+              showModal={showModal}
+              setShowModal={setShowModal}
+              handleInputChange={handleInputChange}
+              user={userForm}
+              laboratories={laboratories}
+              handleSubmit={handleSubmit}
+            />
+          </div>
         </main>
       </div>
     </div>
